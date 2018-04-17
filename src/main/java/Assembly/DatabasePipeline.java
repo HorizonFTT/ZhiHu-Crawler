@@ -25,7 +25,4 @@ public class DatabasePipeline implements Pipeline {
             db.add(resultItems.get("data"));
         }
     }
-
-    
-
 }
