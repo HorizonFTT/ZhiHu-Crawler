@@ -209,4 +209,8 @@ public class User {
 		this.location = location;
 	}
 
+	@Override
+	public String toString(){
+		return id;
+	}
 }
