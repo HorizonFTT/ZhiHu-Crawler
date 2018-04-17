@@ -1,2 +1,2 @@
 # ZhiHu-Crawler
-A simple ZhiHU Crawler using WebMagic
+A simple ZhiHu Crawler using WebMagic
