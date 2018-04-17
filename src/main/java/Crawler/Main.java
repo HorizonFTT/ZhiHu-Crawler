@@ -1,6 +1,8 @@
 package Crawler;
 
-import Assembly.*;
+import Assembly.MySpider;
+import Assembly.Processor;
+import Assembly.MyDownloader;
 
 import java.util.Scanner;
 
@@ -55,6 +57,7 @@ public class Main {
         } while (!temp.equals(""));
         System.out.println("Stopping...");
         zhiHuSpider.stop();
+        
         try {
             Thread.sleep(2000);
             System.out.println("Querying...");

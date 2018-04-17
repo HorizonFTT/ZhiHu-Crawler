@@ -1,6 +1,6 @@
 package Assembly;
 
-import Database.*;
+import Database.User;
 
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
@@ -64,7 +64,6 @@ public class Processor implements PageProcessor {
             System.out.println("banned!!!");
             return;
         }
-
         if (page.getStatusCode() != 200) {
             System.out.println(page.getStatusCode());
         }

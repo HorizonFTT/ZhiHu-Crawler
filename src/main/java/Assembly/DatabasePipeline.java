@@ -1,7 +1,7 @@
 package Assembly;
 
-import Database.Database;
-import Database.User;
+import Database.*;
+
 import us.codecraft.webmagic.ResultItems;
 import us.codecraft.webmagic.Task;
 import us.codecraft.webmagic.pipeline.Pipeline;
