@@ -2,9 +2,6 @@ package Assembly;
 
 import Database.*;
 
-import java.io.File;
-import java.nio.file.Files;
-
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.processor.PageProcessor;
@@ -21,12 +18,6 @@ public class Processor implements PageProcessor {
     private static Site site = Site.me().setRetryTimes(3).setUserAgent(
             "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36")
             .setCharset("UTF-8").addHeader("Host", "www.zhihu.com").setTimeOut(10000).setSleepTime(1000);
-
-    private Database db = null;
-
-    public Processor(boolean local) {
-        db = new Database(local);
-    }
 
     private void setJsonInfo(Page page) {
         var user = new User();
@@ -59,7 +50,7 @@ public class Processor implements PageProcessor {
         user.setAgree(userJson.jsonPath("$.voteupCount").get());
         user.setFollower(userJson.jsonPath("$.followerCount").get());
 
-        db.add(user);
+        page.putField("data", user);
     }
 
     private String getAPI(String url) {
@@ -93,29 +84,4 @@ public class Processor implements PageProcessor {
     public Site getSite() {
         return site;
     }
-
-    public void empty(boolean del) {
-        if (del == true) {
-            db.delete();
-            try {
-                var file = new File("logs/www.zhihu.com.cursor.txt");
-                if (file.exists()) {
-                    var temp = new File("logs/temp.txt");
-                    if (!temp.exists()) {
-                        file.createNewFile();
-                    }
-                    Files.copy(file.toPath(), temp.toPath());
-                    file.delete();
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-        }
-    }
-
-    public void count() {
-        db.num();
-    }
-
 }
