@@ -58,7 +58,7 @@ public class MySpider extends Spider {
             int position = flag / num;
             if (position == cookieList.size() - 1) {
                 flag = -num;
-                count();
+                db.keepAlive();
             }
             site.addCookie("z_c0", cookieList.get(position));
         }
