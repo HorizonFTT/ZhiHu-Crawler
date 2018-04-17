@@ -51,20 +51,8 @@ public class Database {
         }
     }
 
-    private void check(){
-        try {
-            if(connection.isClosed()){
-                System.out.println("oops!");
-                connect();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
     public void add(User user) {
         try {
-            check();
             var sql = "INSERT INTO ZhiHuUser (ID, Name, Sex, Introduction, School, Company, Job, Business, "
                     + "Location, Answer, Agree, Follower) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
             PreparedStatement ps = connection.prepareStatement(sql);
@@ -88,7 +76,6 @@ public class Database {
 
     public void num() {
         try {
-            check();
             var sql = "SELECT COUNT(ID) AS Num FROM ZhiHuUser;";
             resultSet = statement.executeQuery(sql);
             while (resultSet.next()) {
@@ -101,7 +88,6 @@ public class Database {
 
     public void delete() {
         try {
-            check();
             statement = connection.createStatement();
             var sql = "DELETE FROM ZhiHuUser;";
             statement.executeUpdate(sql);

@@ -11,10 +11,8 @@ import us.codecraft.webmagic.scheduler.FileCacheQueueScheduler;
  * Main
  */
 public class Main {
-    
-    private Processor zhiHu = null;
 
-    private MySpider sp = null;
+    private MySpider zhiHuSpider = null;
 
     private static Scanner sin = new Scanner(System.in);
 
@@ -36,17 +34,18 @@ public class Main {
             }
         }
 
-        zhiHu = new Processor(local);
-        zhiHu.empty(del);
-        System.out.println("Starting...");
-        sp = new MySpider(zhiHu);
-        sp.addUrl("https://www.zhihu.com/people/lu-jia-1-62/activities").setDownloader(new MyDownloader(sp))
-                .setScheduler(new FileCacheQueueScheduler("logs")).thread(threads);
+        Processor zhiHu = new Processor();
+        zhiHuSpider = new MySpider(zhiHu, local);
+        System.out.println("Starting...");        
+        zhiHuSpider.empty(del);
+        zhiHuSpider.addUrl("https://www.zhihu.com/people/lu-jia-1-62/activities").setDownloader(new MyDownloader(zhiHuSpider))
+                .setScheduler(new FileCacheQueueScheduler("logs"))
+                .thread(threads);
     }
 
     public void start(String[] args) {
         init(args);
-        sp.start();
+        zhiHuSpider.start();
     }
 
     public void checkEnd() {
@@ -55,11 +54,11 @@ public class Main {
             temp = sin.nextLine();
         } while (!temp.equals(""));
         System.out.println("Stopping...");
-        sp.stop();
+        zhiHuSpider.stop();
         try {
             Thread.sleep(2000);
             System.out.println("Querying...");
-            zhiHu.count();
+            zhiHuSpider.count();
         } catch (Exception e) {
             e.printStackTrace();
         }
