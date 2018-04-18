@@ -3,6 +3,9 @@
 
 使用WebMagic框架, Maven构建项目
 
+# 数据展示
+![数据展示](https://github.com/Sword-And-Rose/ZhiHu-Crawler/blob/master/img/%E6%95%B0%E6%8D%AE%E5%B1%95%E7%A4%BA.png)
+
 # 环境配置
 JDK版本:10   低版本需手动替换代码中的var
 
@@ -25,5 +28,9 @@ JDK版本:10   低版本需手动替换代码中的var
 
 数量不限, 爬取速度(由线程数和爬取间隔决定)可随cookies数的增加而增加, 同时也可减少账号暂时被封的风险
 
+### 运行示例
+![运行示例](https://github.com/Sword-And-Rose/ZhiHu-Crawler/blob/master/img/%E8%BF%90%E8%A1%8C%E7%A4%BA%E4%BE%8B.png)
+
+爬取过程中按Enter键停止爬虫(注:意外/强行关闭可能导致爬取记录丢失/下次爬取时向数据库中插入重复的值)
 # 可视化分析
 待更新
