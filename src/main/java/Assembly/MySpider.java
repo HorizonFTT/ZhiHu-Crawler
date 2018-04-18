@@ -52,8 +52,8 @@ public class MySpider extends Spider {
     }
 
     public void setSite() {
-        site.setSleepTime(1000 + random.nextInt(2000));
-        int num = 100;
+        site.setSleepTime(500 + random.nextInt(4000));
+        int num = 50;
         if (++flag % num == 0) {
             int position = flag / num;
             if (position == cookieList.size() - 1) {

@@ -112,7 +112,7 @@ public class Database {
         try {
             statement = connection.createStatement();
             var sql = "SELECT 1;";
-            statement.executeUpdate(sql);
+            statement.execute(sql);
         } catch (Exception e) {
             e.printStackTrace();
         }
