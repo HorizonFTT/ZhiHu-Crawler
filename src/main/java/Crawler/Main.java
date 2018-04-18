@@ -23,7 +23,7 @@ public class Main {
         var del = false;
         int threads = 10;
 
-        if (args.length>0 && args[0].equals("-s")) {
+        if (args.length > 0 && args[0].equals("-s")) {
             System.out.println("Do you want to save the data locally? Enter 'local' to do this:");
             local = sin.nextLine().equals("local");
             System.out.println("Do you want to empty the existing data? Enter 'delete' to do this:");
@@ -41,7 +41,8 @@ public class Main {
         System.out.println("Starting...");
         zhiHuSpider.empty(del);
         zhiHuSpider.addUrl("https://www.zhihu.com/people/lu-jia-1-62/activities")
-                .setDownloader(new MyDownloader(zhiHuSpider)).setScheduler(new FileCacheQueueScheduler("logs"))
+                .setDownloader(new MyDownloader(zhiHuSpider))
+                .setScheduler(new FileCacheQueueScheduler("logs"))
                 .thread(threads);
     }
 

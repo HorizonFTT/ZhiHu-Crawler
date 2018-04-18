@@ -51,8 +51,8 @@ public class MySpider extends Spider {
     }
 
     public void setSite() {
-        site.setSleepTime(2000 + random.nextInt(2000));//随机休眠时间减少被封风险
-        int num = 50;
+        site.setSleepTime(2000 + random.nextInt(1000));//随机休眠时间减少被封风险
+        int num = 100;
         if (++flag % num == 0) {
             int position = flag / num;
             if (position == cookieList.size() - 1) {
@@ -60,6 +60,7 @@ public class MySpider extends Spider {
                 db.keepAlive();
             }
             site.addCookie("z_c0", cookieList.get(position));//爬取num个页面后切换账号
+            System.out.println("Account number: " + position);
         }
     }
 
