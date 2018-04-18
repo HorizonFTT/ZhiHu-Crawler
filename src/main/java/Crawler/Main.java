@@ -38,16 +38,16 @@ public class Main {
 
         Processor zhiHu = new Processor();
         zhiHuSpider = new MySpider(zhiHu, local);
-        System.out.println("Starting...");        
+        System.out.println("Starting...");
         zhiHuSpider.empty(del);
-        zhiHuSpider.addUrl("https://www.zhihu.com/people/lu-jia-1-62/activities").setDownloader(new MyDownloader(zhiHuSpider))
-                .setScheduler(new FileCacheQueueScheduler("logs"))
+        zhiHuSpider.addUrl("https://www.zhihu.com/people/lu-jia-1-62/activities")
+                .setDownloader(new MyDownloader(zhiHuSpider)).setScheduler(new FileCacheQueueScheduler("logs"))
                 .thread(threads);
     }
 
     public void start(String[] args) {
         init(args);
-        zhiHuSpider.start();
+        zhiHuSpider.start();//当前线程继续执行
     }
 
     public void checkEnd() {
@@ -57,9 +57,9 @@ public class Main {
         } while (!temp.equals(""));
         System.out.println("Stopping...");
         zhiHuSpider.stop();
-        
+
         try {
-            Thread.sleep(2000);
+            Thread.sleep(2000);//等待所有其他线程执行完毕
             System.out.println("Querying...");
             zhiHuSpider.count();
         } catch (Exception e) {

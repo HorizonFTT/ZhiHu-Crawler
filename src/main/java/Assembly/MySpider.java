@@ -28,7 +28,6 @@ public class MySpider extends Spider {
 
     public MySpider(PageProcessor pageProcessor, boolean local) {
         super(pageProcessor);
-        site = pageProcessor.getSite();
         db = new Database(local);
         this.addPipeline(new DatabasePipeline(db));
 
@@ -41,7 +40,7 @@ public class MySpider extends Spider {
             var bReader = new BufferedReader(new FileReader(file));
             String temp = null;
             while ((temp = bReader.readLine()) != null) {
-                temp = temp.replace("\"", "");
+                temp = temp.replace("\"", "");//删除引号
                 var index = temp.indexOf("=");
                 cookieList.add(temp.substring(index + 1));
             }
@@ -52,7 +51,7 @@ public class MySpider extends Spider {
     }
 
     public void setSite() {
-        site.setSleepTime(500 + random.nextInt(4000));
+        site.setSleepTime(2000 + random.nextInt(2000));//随机休眠时间减少被封风险
         int num = 50;
         if (++flag % num == 0) {
             int position = flag / num;
@@ -60,7 +59,7 @@ public class MySpider extends Spider {
                 flag = -num;
                 db.keepAlive();
             }
-            site.addCookie("z_c0", cookieList.get(position));
+            site.addCookie("z_c0", cookieList.get(position));//爬取num个页面后切换账号
         }
     }
 
@@ -83,7 +82,7 @@ public class MySpider extends Spider {
                     if (!temp.exists()) {
                         file.createNewFile();
                     }
-                    Files.copy(file.toPath(), temp.toPath());
+                    Files.copy(file.toPath(), temp.toPath());//清空保存爬取位置防止误删
                     file.delete();
                 }
             } catch (Exception e) {

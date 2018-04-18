@@ -17,7 +17,8 @@ public class Processor implements PageProcessor {
 
     private static Site site = Site.me().setRetryTimes(3).setUserAgent(
             "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36")
-            .setCharset("UTF-8").addHeader("Host", "www.zhihu.com").setTimeOut(10000).setSleepTime(1000);
+            .setCharset("UTF-8").addHeader("Host", "www.zhihu.com").setTimeOut(10000)
+            .addHeader("Referer", "https://www.zhihu.com/");
 
     private void setJsonInfo(Page page) {
         var user = new User();
@@ -27,7 +28,7 @@ public class Processor implements PageProcessor {
         if (temp == null) {
             return;//无法获取该用户主页
         }
-        temp = temp.replace("&quot;", "\"").replace("&lt;", "<").replace("&gt;", ">");
+        temp = temp.replace("&quot;", "\"").replace("&lt;", "<").replace("&gt;", ">");//替换转义字符
         var json = new Json(temp);
         var test = json.jsonPath("$..users['" + id + "']").get();
         if (test == null) {
@@ -35,6 +36,7 @@ public class Processor implements PageProcessor {
         }
         var userJson = new Json(test);
 
+        //采用JsonPath抽取用户个人信息
         user.setId(id);
         user.setName(userJson.jsonPath("$.name").get());
         user.setSex(sex[Integer.valueOf(userJson.jsonPath("$.gender").get()) + 1]);
@@ -50,19 +52,19 @@ public class Processor implements PageProcessor {
         user.setAgree(userJson.jsonPath("$.voteupCount").get());
         user.setFollower(userJson.jsonPath("$.followerCount").get());
 
-        page.putField("data", user);
+        page.putField("data", user);//提交给Pipeline处理
     }
 
     private String getAPI(String url) {
         return url.replace("https://www.zhihu.com/people", "https://www.zhihu.com/api/v4/members").replace("activities",
-                "followees?offset=0&limit=20");
+                "followees?offset=0&limit=20");//获取关注列表
     }
 
     @Override
     public void process(Page page) {
         if (page.getHtml().css("div.Unhuman").match()) {
-            System.out.println("banned!!!");
-            return;
+            System.out.println("banned!!!");//账号/ip被封,终止程序
+            System.exit(-1);
         }
         if (page.getStatusCode() != 200) {
             System.out.println(page.getStatusCode());
