@@ -23,7 +23,7 @@ public class Main {
         var del = false;
         int threads = 10;
 
-        if (args[0].equals("-s")) {
+        if (args.length>0 && args[0].equals("-s")) {
             System.out.println("Do you want to save the data locally? Enter 'local' to do this:");
             local = sin.nextLine().equals("local");
             System.out.println("Do you want to empty the existing data? Enter 'delete' to do this:");

@@ -31,8 +31,6 @@ public class Database {
         try {
             properties.load(new FileInputStream("config/jdbc.properties"));//从配置文件中读取信息
             var address = properties.getProperty("Address");
-            var user = properties.getProperty("User");
-            var password = properties.getProperty("Password");
             var databaseName = properties.getProperty("DatabaseName");
             String connectionString = null;
             String sql = null;
@@ -47,6 +45,8 @@ public class Database {
                         + "Company nvarchar(100) NULL, Job nvarchar(100) NULL, Business nvarchar(32) NULL, "
                         + "Location nvarchar(100) NULL, Answer int NOT NULL, Agree int NOT NULL, Follower int NOT NULL);";
             } else {
+                var user = properties.getProperty("User");
+                var password = properties.getProperty("Password");
                 connectionString = "jdbc:mysql://" + address + "/" + databaseName + "?useSSL=false&user=" + user
                         + "&password=" + password;
                 sql = "CREATE TABLE IF NOT EXISTS ZhiHuUser (ID nvarchar(128) PRIMARY KEY NOT NULL, Name nvarchar(32) NOT NULL, "
