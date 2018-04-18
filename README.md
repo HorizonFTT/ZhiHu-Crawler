@@ -6,8 +6,8 @@
 # 数据展示
 ![数据展示](https://github.com/Sword-And-Rose/ZhiHu-Crawler/blob/master/img/%E6%95%B0%E6%8D%AE%E5%B1%95%E7%A4%BA.png)
 
-# 环境配置
-JDK版本:10   低版本需手动替换代码中的var
+# 运行环境
+JDK版本:10   低版本需手动替换代码中的var
 
 数据库支持:SQL Server/MySql
 
