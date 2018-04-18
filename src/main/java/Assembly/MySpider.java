@@ -36,7 +36,7 @@ public class MySpider extends Spider {
     }
 
     private void initCookies() {
-        var file = new File("cookies.txt");
+        var file = new File("config/cookies.txt");
         try {
             var bReader = new BufferedReader(new FileReader(file));
             String temp = null;

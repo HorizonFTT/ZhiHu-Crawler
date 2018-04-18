@@ -68,7 +68,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        PropertyConfigurator.configure("log4j.properties");
+        PropertyConfigurator.configure("config/log4j.properties");
         var beg = System.currentTimeMillis();
 
         var program = new Main();
