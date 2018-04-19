@@ -40,7 +40,22 @@ JDK版本:10   低版本需手动替换代码中的var
 
 项目分为主程序模块[Crawler](https://github.com/Sword-And-Rose/ZhiHu-Crawler/tree/master/src/main/java/Crawler),爬虫组件模块[Assembly](https://github.com/Sword-And-Rose/ZhiHu-Crawler/tree/master/src/main/java/Assembly),持久化模块[Database](https://github.com/Sword-And-Rose/ZhiHu-Crawler/tree/master/src/main/java/Database)
 
-具体待更新
+### Crawler
+[Main.java](https://github.com/Sword-And-Rose/ZhiHu-Crawler/blob/master/src/main/java/Crawler/Main.java):爬虫的配置,启动和终止
+
+### Assembly
+[DatabasePipeline.java](https://github.com/Sword-And-Rose/ZhiHu-Crawler/blob/master/src/main/java/Assembly/DatabasePipeline.java):爬取信息的输出和数据的持久化
+
+[MyDownloader.java](https://github.com/Sword-And-Rose/ZhiHu-Crawler/blob/master/src/main/java/Assembly/MyDownloader.java):在每次下载前更新请求头信息
+
+[MySpider.java](https://github.com/Sword-And-Rose/ZhiHu-Crawler/blob/master/src/main/java/Assembly/MySpider.java):cookies信息的处理和账号切换
+
+[Processor,java](https://github.com/Sword-And-Rose/ZhiHu-Crawler/blob/master/src/main/java/Assembly/Processor.java):爬虫过程主体,包括信息的抽取,后续Url的获取等
+
+### Database
+[Database.java](https://github.com/Sword-And-Rose/ZhiHu-Crawler/blob/master/src/main/java/Database/Database.java):实现操作数据库相关的功能
+
+[User.java](https://github.com/Sword-And-Rose/ZhiHu-Crawler/blob/master/src/main/java/Database/User.java):用户信息类
 
 # 可视化分析
 待更新
