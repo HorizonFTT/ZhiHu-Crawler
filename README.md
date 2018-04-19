@@ -3,15 +3,15 @@
 
 使用WebMagic框架, Maven构建项目
 
-# 数据展示
+## 数据展示
 ![数据展示](https://github.com/Sword-And-Rose/ZhiHu-Crawler/blob/master/img/%E6%95%B0%E6%8D%AE%E5%B1%95%E7%A4%BA.png)
 
-# 运行环境
+## 运行环境
 JDK版本:10   低版本需手动替换代码中的var
 
 数据库支持:SQL Server/MySql
 
-# 运行
+## 运行
 主程序入口:[Main.java](https://github.com/Sword-And-Rose/ZhiHu-Crawler/blob/master/src/main/java/Crawler/Main.java)
 
 初次运行请配置[jdbc.properties](https://github.com/Sword-And-Rose/ZhiHu-Crawler/blob/master/config/jdbc.properties)和[cookies.txt](https://github.com/Sword-And-Rose/ZhiHu-Crawler/blob/master/config/cookies.txt)
@@ -35,7 +35,7 @@ JDK版本:10   低版本需手动替换代码中的var
 
 平均爬取速度:1w条/h(5账号,10线程,2000+random(1000)sleep)
 
-# 代码分析
+## 程序分析
 所用框架语法参见[WebMagic文档](http://webmagic.io/docs/zh/)
 
 项目分为主程序模块[Crawler](https://github.com/Sword-And-Rose/ZhiHu-Crawler/tree/master/src/main/java/Crawler),爬虫组件模块[Assembly](https://github.com/Sword-And-Rose/ZhiHu-Crawler/tree/master/src/main/java/Assembly),持久化模块[Database](https://github.com/Sword-And-Rose/ZhiHu-Crawler/tree/master/src/main/java/Database)
@@ -57,5 +57,5 @@ JDK版本:10   低版本需手动替换代码中的var
 
 [User.java](https://github.com/Sword-And-Rose/ZhiHu-Crawler/blob/master/src/main/java/Database/User.java):用户信息类
 
-# 可视化分析
+## 可视化分析
 待更新
