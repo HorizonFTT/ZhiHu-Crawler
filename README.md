@@ -16,7 +16,7 @@ JDK版本:10   低版本需手动替换代码中的var
 
 初次运行请配置[jdbc.properties](https://github.com/Sword-And-Rose/ZhiHu-Crawler/blob/master/config/jdbc.properties)和[cookies.txt](https://github.com/Sword-And-Rose/ZhiHu-Crawler/blob/master/config/cookies.txt)
 
-添加-s命令行参数可配置是否清空原有数据/线程数等
+添加-s命令行参数可配置是否清空原有数据/线程数等,默认线程数为10
 
 ### 数据库配置
 默认使用MySql持久化数据, 填入基本信息即可.
@@ -32,5 +32,11 @@ JDK版本:10   低版本需手动替换代码中的var
 ![运行示例](https://github.com/Sword-And-Rose/ZhiHu-Crawler/blob/master/img/%E8%BF%90%E8%A1%8C%E7%A4%BA%E4%BE%8B.png)
 
 爬取过程中按Enter键停止爬虫(注:意外/强行关闭可能导致爬取记录丢失/下次爬取时向数据库中插入重复的值)
+
+# 代码分析
+所用框架语法参见[WebMagic文档](http://webmagic.io/docs/zh/)
+
+项目分为主程序模块[Crawler](https://github.com/Sword-And-Rose/ZhiHu-Crawler/tree/master/src/main/java/Crawler),爬虫组件模块[Assembly](https://github.com/Sword-And-Rose/ZhiHu-Crawler/tree/master/src/main/java/Assembly),持久化模块[Database](https://github.com/Sword-And-Rose/ZhiHu-Crawler/tree/master/src/main/java/Database)
+
 # 可视化分析
 待更新
