@@ -38,5 +38,7 @@ JDK版本:10   低版本需手动替换代码中的var
 
 项目分为主程序模块[Crawler](https://github.com/Sword-And-Rose/ZhiHu-Crawler/tree/master/src/main/java/Crawler),爬虫组件模块[Assembly](https://github.com/Sword-And-Rose/ZhiHu-Crawler/tree/master/src/main/java/Assembly),持久化模块[Database](https://github.com/Sword-And-Rose/ZhiHu-Crawler/tree/master/src/main/java/Database)
 
+具体待更新
+
 # 可视化分析
 待更新
