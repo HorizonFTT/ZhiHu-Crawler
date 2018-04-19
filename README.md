@@ -50,7 +50,7 @@ JDK版本:10   低版本需手动替换代码中的var
 
 *  [MyDownloader.java](https://github.com/Sword-And-Rose/ZhiHu-Crawler/blob/master/src/main/java/Assembly/MyDownloader.java):在每次下载前更新请求头信息
 
-*  [MySpider.java](https://github.com/Sword-And-Rose/ZhiHu-Crawler/blob/master/src/main/java/Assembly/MySpider.java):cookies信息的处理和账号切换
+*  [MySpider.java](https://github.com/Sword-And-Rose/ZhiHu-Crawler/blob/master/src/main/java/Assembly/MySpider.java):cookies信息的处理,账号切换和爬取间隔的设置等
 
 *  [Processor.java](https://github.com/Sword-And-Rose/ZhiHu-Crawler/blob/master/src/main/java/Assembly/Processor.java):爬虫过程主体,包括信息的抽取,后续Url的获取等
 
