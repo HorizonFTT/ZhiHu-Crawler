@@ -1,5 +1,5 @@
 # ZhiHu-Crawler
-简单的Java爬虫项目, 爬取知乎用户信息, 目前已爬取80w条
+简单的Java爬虫项目, 爬取知乎用户信息, 目前已爬取90w条
 
 使用WebMagic框架, Maven构建项目
 
