@@ -60,8 +60,8 @@ JDK版本: __10__   低版本需手动替换代码中的var
 *  [User.java](https://github.com/Sword-And-Rose/ZhiHu-Crawler/blob/master/src/main/java/Database/User.java): 用户信息类
 
 ## 可视化分析
-<img src="https://github.com/Sword-And-Rose/ZhiHu-Crawler/blob/master/img/%E7%94%B7%E5%A5%B3%E6%AF%94%E4%BE%8B.png" align="middle" />
+<div align=center><img src="https://github.com/Sword-And-Rose/ZhiHu-Crawler/blob/master/img/%E7%94%B7%E5%A5%B3%E6%AF%94%E4%BE%8B.png" align=middle /></div>
 
-<center>男女比例</center>
+<p align = "center">男女比例</p>
 
 ![赞同数排名](https://github.com/Sword-And-Rose/ZhiHu-Crawler/blob/master/img/%E8%B5%9E%E5%90%8C%E6%95%B0%E6%8E%92%E5%90%8D.png)
