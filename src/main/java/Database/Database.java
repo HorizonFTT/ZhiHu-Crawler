@@ -12,7 +12,7 @@ import java.util.Properties;
  * Database
  */
 public class Database {
-
+    
     private Connection connection = null;
 
     private Statement statement = null;
@@ -66,6 +66,9 @@ public class Database {
 
     public void add(User user) {
         try {
+            if (connection.isClosed()) {
+                connect();
+            }
             var sql = "INSERT INTO ZhiHuUser (ID, Name, Sex, Introduction, School, Company, Job, Business, "
                     + "Location, Answer, Agree, Follower) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
             PreparedStatement ps = connection.prepareStatement(sql);
@@ -89,6 +92,9 @@ public class Database {
 
     public void num() {
         try {
+            if (connection.isClosed()) {
+                connect();
+            }
             var sql = "SELECT COUNT(ID) AS Num FROM ZhiHuUser;";
             resultSet = statement.executeQuery(sql);
             while (resultSet.next()) {
@@ -111,6 +117,9 @@ public class Database {
 
     public void keepAlive() {
         try {
+            if (connection.isClosed()) {
+                connect();
+            }
             statement = connection.createStatement();
             var sql = "SELECT 1;";
             statement.execute(sql);

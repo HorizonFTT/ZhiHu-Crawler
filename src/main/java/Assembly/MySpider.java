@@ -51,7 +51,7 @@ public class MySpider extends Spider {
     }
 
     public void setSite() {
-        site.setSleepTime(2000 + random.nextInt(1000));//随机休眠时间减少被封风险
+        site.setSleepTime(2000 + random.nextInt(3000));//随机休眠时间减少被封风险
         int num = 100;
         if (++flag % num == 0) {
             int position = flag / num;
@@ -63,7 +63,7 @@ public class MySpider extends Spider {
             System.out.println("Account number: " + position);
         }
     }
-
+    
     @Override
     public Site getSite() {
         return site;
