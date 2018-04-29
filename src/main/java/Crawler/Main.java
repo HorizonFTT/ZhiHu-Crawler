@@ -60,7 +60,7 @@ public class Main {
         zhiHuSpider.stop();
 
         try {
-            Thread.sleep(2000);//等待所有其他线程执行完毕
+            Thread.sleep(2000);
             System.out.println("Querying...");
             zhiHuSpider.count();
         } catch (Exception e) {
