@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>Crawler</groupId>
-  <artifactId>ZhiHuSpider</artifactId>
+  <artifactId>ZhiHuCrawler</artifactId>
   <version>2.3</version>
   <packaging>jar</packaging>
   <name>ZhiHuSpider</name>
@@ -19,14 +19,14 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>com.microsoft.sqlserver</groupId>
-      <artifactId>mssql-jdbc</artifactId>
-      <version>6.4.0.jre9</version>
-    </dependency>
-    <dependency>
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
       <version>8.0.9-rc</version>
+    </dependency>
+    <dependency>
+      <groupId>com.microsoft.sqlserver</groupId>
+      <artifactId>mssql-jdbc</artifactId>
+      <version>6.4.0.jre9</version>
     </dependency>
     <dependency>
       <groupId>us.codecraft</groupId>
