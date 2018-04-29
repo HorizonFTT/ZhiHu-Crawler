@@ -12,7 +12,7 @@ import java.util.Properties;
  * Database
  */
 public class Database {
-    
+
     private Connection connection = null;
 
     private Statement statement = null;
@@ -37,8 +37,8 @@ public class Database {
 
             //若表不存在,建立,默认表名为ZhiHuUser
             if (local == true) {
-                connectionString = "jdbc:sqlserver://" + address + ";integratedSecurity=true;databaseName="
-                        + databaseName;
+                Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+                connectionString = "jdbc:sqlserver://" + address + ";integratedSecurity=true;database=" + databaseName;
                 sql = "IF NOT EXISTS(SELECT * FROM sysobjects WHERE name='ZhiHuUser')"
                         + "CREATE TABLE dbo.ZhiHuUser (ID nvarchar(128) PRIMARY KEY NOT NULL, Name nvarchar(32) NOT NULL, "
                         + "Sex nvarchar(6) NOT NULL, Introduction nvarchar(600) NULL, School nvarchar(100) NULL, "
@@ -47,6 +47,7 @@ public class Database {
             } else {
                 var user = properties.getProperty("User");
                 var password = properties.getProperty("Password");
+                Class.forName("com.mysql.cj.jdbc.Driver");
                 connectionString = "jdbc:mysql://" + address + "/" + databaseName + "?useSSL=false&user=" + user
                         + "&password=" + password;
                 sql = "CREATE TABLE IF NOT EXISTS ZhiHuUser (ID nvarchar(128) PRIMARY KEY NOT NULL, Name nvarchar(32) NOT NULL, "
