@@ -1,8 +1,10 @@
 package Assembly;
 
-import Database.User;
-import Crawler.Main;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import Crawler.Main;
+import Database.User;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.processor.PageProcessor;
@@ -17,6 +19,8 @@ public class Processor implements PageProcessor {
     private final String[] sex = { "未知", "女", "男" };
 
     private Main program = null;
+
+    private Logger logger = LoggerFactory.getLogger(getClass());
 
     private static Site site = Site.me().setRetryTimes(3).setUserAgent(
             "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36")
@@ -33,12 +37,14 @@ public class Processor implements PageProcessor {
         var id = page.getUrl().regex("people/(.*?)/", 1).get();
         var temp = page.getHtml().css("div#data").regex("data-state=\"(.*?)\"", 1).get();
         if (temp == null) {
+            logger.info("The home page of " + id + " is not available.");
             return;// 无法获取该用户主页
         }
         temp = temp.replace("&quot;", "\"").replace("&lt;", "<").replace("&gt;", ">");// 替换转义字符
         var json = new Json(temp);
         var test = json.jsonPath("$..users['" + id + "']").get();
         if (test == null) {
+            logger.info("The home page of " + id + " is not available.");
             return;// 该用户账号被封禁
         }
         var userJson = new Json(test);
@@ -71,6 +77,7 @@ public class Processor implements PageProcessor {
     public void process(Page page) {
         if (page.getHtml().css("div.Unhuman").match()) {
             System.out.println("banned!!!");// 账号/ip被封,终止程序
+            logger.error("Account has been banned!");
             program.exitProgram();
         }
         if (page.getStatusCode() != 200) {
