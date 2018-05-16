@@ -8,6 +8,9 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Properties;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * Database
  */
@@ -20,6 +23,8 @@ public class Database {
     private ResultSet resultSet = null;
 
     private boolean local;
+
+    private Logger logger = LoggerFactory.getLogger(getClass());
 
     public Database(boolean local) {
         this.local = local;
@@ -61,7 +66,9 @@ public class Database {
             statement = connection.createStatement();
             statement.executeUpdate(sql);
         } catch (Exception e) {
+            logger.error("Database config error!");
             e.printStackTrace();
+            System.exit(1);
         }
     }
 

@@ -8,6 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import Database.Database;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.Spider;
@@ -25,6 +28,9 @@ public class MySpider extends Spider {
     private List<String> cookieList = new ArrayList<>();
 
     private Database db = null;
+
+    private Logger logger = LoggerFactory.getLogger(getClass());
+
 
     public MySpider(PageProcessor pageProcessor, boolean local) {
         super(pageProcessor);
@@ -46,7 +52,9 @@ public class MySpider extends Spider {
             }
             bReader.close();
         } catch (Exception e) {
+            logger.error("cookies config error!");
             e.printStackTrace();
+            System.exit(1);
         }
     }
 

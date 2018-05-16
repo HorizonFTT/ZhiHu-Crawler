@@ -36,7 +36,7 @@ public class Main {
             }
         }
 
-        Processor zhiHu = new Processor(this);
+        Processor zhiHu = new Processor();
         zhiHuSpider = new MySpider(zhiHu, local);
         System.out.println("Starting...");
         zhiHuSpider.empty(del);
@@ -76,6 +76,11 @@ public class Main {
         var beg = System.currentTimeMillis();
 
         var program = new Main();
+        Runtime.getRuntime().addShutdownHook(new Thread(){
+            public void run(){
+                program.exitProgram();
+            }
+        });
         program.start(args);
         program.checkEnd();
 

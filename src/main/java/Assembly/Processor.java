@@ -3,7 +3,6 @@ package Assembly;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import Crawler.Main;
 import Database.User;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
@@ -18,19 +17,12 @@ public class Processor implements PageProcessor {
 
     private final String[] sex = { "未知", "女", "男" };
 
-    private Main program = null;
-
     private Logger logger = LoggerFactory.getLogger(getClass());
 
     private static Site site = Site.me().setRetryTimes(3).setUserAgent(
             "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36")
             .setCharset("UTF-8").addHeader("Host", "www.zhihu.com").setTimeOut(10000)
             .addHeader("Referer", "https://www.zhihu.com/");
-
-    public Processor(Main program) {
-        this.program = program;
-    }
-
     private void setJsonInfo(Page page) {
         var user = new User();
 
@@ -78,7 +70,7 @@ public class Processor implements PageProcessor {
         if (page.getHtml().css("div.Unhuman").match()) {
             System.out.println("banned!!!");// 账号/ip被封,终止程序
             logger.error("Account has been banned!");
-            program.exitProgram();
+            System.exit(1);
         }
         if (page.getStatusCode() != 200) {
             System.out.println(page.getStatusCode());
