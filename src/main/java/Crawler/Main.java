@@ -68,21 +68,12 @@ public class Main {
         }
     }
 
-    public void checkEnd() {
-        String temp = null;
-        do {
-            temp = sin.nextLine();
-        } while (!temp.equals(""));
-        exitProgram();
-    }
-
     public static void main(String[] args) {
         PropertyConfigurator.configure("config/log4j.properties");
         var beg = System.currentTimeMillis();
 
         var program = new Main();
         program.start(args);
-        program.checkEnd();
 
         var end = System.currentTimeMillis();
         System.out.println("Time consuming: " + (end - beg) / 1000 + "(s)");

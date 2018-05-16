@@ -31,7 +31,7 @@ JDK版本: __10__   低版本需手动替换代码中的var
 ### 运行示例
 ![运行示例](https://github.com/Sword-And-Rose/ZhiHu-Crawler/blob/master/img/%E8%BF%90%E8%A1%8C%E7%A4%BA%E4%BE%8B.png)
 
-爬取过程中按 __Enter__ 键停止爬虫 (__注:意外/强行关闭可能导致爬取记录丢失/下次爬取时向数据库中插入重复的值__)
+爬取过程中按 ctrl+c 键停止爬虫 
 
 平均爬取速度: 1w条/h (5账号,10线程,2000+random(1000)sleep)
 
