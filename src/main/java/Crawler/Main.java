@@ -52,7 +52,7 @@ public class Main {
                 exitProgram();
             }
         });
-        zhiHuSpider.start();// 当前线程继续执行
+        zhiHuSpider.run();
     }
 
     public void exitProgram() {
