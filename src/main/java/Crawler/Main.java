@@ -47,6 +47,11 @@ public class Main {
 
     public void start(String[] args) {
         init(args);
+        Runtime.getRuntime().addShutdownHook(new Thread(){
+            public void run(){
+                exitProgram();
+            }
+        });
         zhiHuSpider.start();// 当前线程继续执行
     }
 
@@ -76,11 +81,6 @@ public class Main {
         var beg = System.currentTimeMillis();
 
         var program = new Main();
-        Runtime.getRuntime().addShutdownHook(new Thread(){
-            public void run(){
-                program.exitProgram();
-            }
-        });
         program.start(args);
         program.checkEnd();
 
