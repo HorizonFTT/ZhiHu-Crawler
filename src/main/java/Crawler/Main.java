@@ -16,7 +16,9 @@ public class Main {
 
     private MySpider zhiHuSpider = null;
 
-    private static Scanner sin = new Scanner(System.in);
+    private static long beg;
+
+    private static long end;
 
     private void init(String[] args) {
         var local = false;
@@ -24,6 +26,7 @@ public class Main {
         int threads = 10;
 
         if (args.length > 0 && args[0].equals("-s")) {
+            Scanner sin = new Scanner(System.in);
             System.out.println("Do you want to save the data locally? Enter 'local' to do this:");
             local = sin.nextLine().equals("local");
             System.out.println("Do you want to empty the existing data? Enter 'delete' to do this:");
@@ -33,6 +36,8 @@ public class Main {
                 threads = Integer.valueOf(sin.nextLine());
             } catch (NumberFormatException e) {
                 threads = 10;
+            }finally{
+                sin.close();
             }
         }
 
@@ -47,8 +52,8 @@ public class Main {
 
     public void start(String[] args) {
         init(args);
-        Runtime.getRuntime().addShutdownHook(new Thread(){
-            public void run(){
+        Runtime.getRuntime().addShutdownHook(new Thread() {
+            public void run() {
                 exitProgram();
             }
         });
@@ -57,27 +62,18 @@ public class Main {
 
     public void exitProgram() {
         System.out.println("Stopping...");
-        zhiHuSpider.stop();
-
-        try {
-            Thread.sleep(2000);
-            System.out.println("Querying...");
-            zhiHuSpider.count();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        zhiHuSpider.close();
+        System.out.println("Querying...");
+        zhiHuSpider.count();
+        end = System.currentTimeMillis();
+        System.out.println("Time consuming: " + (end - beg) / 1000 + "(s)");
     }
 
     public static void main(String[] args) {
         PropertyConfigurator.configure("config/log4j.properties");
-        var beg = System.currentTimeMillis();
+        beg = System.currentTimeMillis();
 
         var program = new Main();
         program.start(args);
-
-        var end = System.currentTimeMillis();
-        System.out.println("Time consuming: " + (end - beg) / 1000 + "(s)");
-
-        sin.close();
     }
 }
