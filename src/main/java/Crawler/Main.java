@@ -61,10 +61,10 @@ public class Main {
     }
 
     public void exitProgram() {
-        System.out.println("Stopping...");
-        zhiHuSpider.close();
         System.out.println("Querying...");
         zhiHuSpider.count();
+        System.out.println("Stopping...");
+        zhiHuSpider.close();
         end = System.currentTimeMillis();
         System.out.println("Time consuming: " + (end - beg) / 1000 + "(s)");
     }
