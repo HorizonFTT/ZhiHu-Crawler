@@ -31,7 +31,6 @@ public class MySpider extends Spider {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
 
-
     public MySpider(PageProcessor pageProcessor, boolean local) {
         super(pageProcessor);
         db = new Database(local);

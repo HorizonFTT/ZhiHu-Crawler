@@ -23,6 +23,7 @@ public class Processor implements PageProcessor {
             "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36")
             .setCharset("UTF-8").addHeader("Host", "www.zhihu.com").setTimeOut(10000)
             .addHeader("Referer", "https://www.zhihu.com/");
+
     private void setJsonInfo(Page page) {
         var user = new User();
 
@@ -72,6 +73,7 @@ public class Processor implements PageProcessor {
             logger.error("Account has been banned!");
             System.exit(1);
         }
+        
         if (page.getStatusCode() != 200) {
             System.out.println(page.getStatusCode());
         }
